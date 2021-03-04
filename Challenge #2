@@ -1,0 +1,5 @@
+TASK:We need to write code that will query the meta data of an instance within aws and provide a json formatted output. The choice of language and implementation is up to you.
+The code allows for a particular data key to be retrieved individually
+
+Implementation Approach:We can run the below command through AWS CLI to get the desired output:
+aws ec2 describe-instances --instance-ids <Write Instance ID's here> --query "Reservations[*].Instances[*].{name: Tags[?Key=='Name'] | [0].Value, instance_id: InstanceId, ip_address: PrivateIpAddress, state: State.Name}" --output json
